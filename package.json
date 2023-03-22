@@ -1,0 +1,23 @@
+{
+  "name": "sprout-mobile-bot-webhook-api",
+  "version": "1.0.0",
+  "description": "This is a Webhook API for Sprout Mobile chatbot.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "tunnel": "ngrok http 8080"
+  },
+  "author": "Jayson Teano",
+  "license": "ISC",
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "actions-on-google": "^2.12.0",
+    "dialogflow-fulfillment": "^0.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "ngrok": "^4.3.3"
+  }
+}
