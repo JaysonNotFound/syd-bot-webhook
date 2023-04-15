@@ -12,8 +12,7 @@ function topics() {
 function aboutFeatures() {
   return [
     new Suggestion("Mobile Bundy"),
-    new Suggestion("Geotag"),
-    new Suggestion("Geofence"),
+    new Suggestion("Geotag and Geofence"),
     new Suggestion("My Requests"),
     new Suggestion("Instacash"),
   ];

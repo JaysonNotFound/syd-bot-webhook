@@ -3,16 +3,15 @@ const { WebhookClient } = require("dialogflow-fulfillment");
 
 const greeting = require("./intents/greeting_intent");
 const topicsSuggest = require("./intents/topic_suggest_intent");
+
 const aboutFeatures = require("./intents/about_features_intent");
 const aboutFeaturesSuggest = require("./intents/about_features_suggest_intent");
-
-const clock = require("./intents/clock_intent");
-
 const aboutFeaturesMobileBundy = require("./intents/about_features_mobile_bundy_intent");
-const aboutFeaturesGeotag = require("./intents/about_features_geotag_intent");
-const aboutFeaturesGeofence = require("./intents/about_features_geofence_intent");
+const aboutFeaturesGeo = require("./intents/about_features_geo_intent");
 const aboutFeaturesInstacash = require("./intents/about_features_instacash_intent");
 const aboutFeaturesMyRequest = require("./intents/about_features_my_requests_intent");
+
+const clock = require("./intents/clock_intent");
 
 const app = express();
 
@@ -47,14 +46,8 @@ app.post("/chatbot", express.json(), (req, res) => {
     aboutFeaturesMobileBundy.fallback
   );
 
-  intentMap.set("about.features.geotag", aboutFeaturesGeotag.default);
-  intentMap.set("about.features.geotag-fallback", aboutFeaturesGeotag.fallback);
-
-  intentMap.set("about.features.geofence", aboutFeaturesGeofence.default);
-  intentMap.set(
-    "about.features.geofence-fallback",
-    aboutFeaturesGeofence.fallback
-  );
+  intentMap.set("about.features.geo", aboutFeaturesGeo.default);
+  intentMap.set("about.features.geo-fallback", aboutFeaturesGeo.fallback);
 
   intentMap.set("about.features.instacash", aboutFeaturesInstacash.default);
   intentMap.set(
@@ -69,8 +62,10 @@ app.post("/chatbot", express.json(), (req, res) => {
   );
 
   intentMap.set("clocking", clock.default);
-  intentMap.set("clock-in", clock.clockIn);
-  intentMap.set("clock-out", clock.clockOut);
+  intentMap.set("clocking.clock_in", clock.clockIn);
+  intentMap.set("clocking.clock_in-yes", clock.clockInYes);
+  intentMap.set("clocking.clock_out", clock.clockOut);
+  intentMap.set("clocking.clock_out-yes", clock.clockOutYes);
 
   agent.handleRequest(intentMap);
 });
