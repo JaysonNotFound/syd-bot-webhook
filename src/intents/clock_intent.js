@@ -8,11 +8,15 @@ function intentHandler(agent) {
 }
 
 function clockInHandler(agent) {
-  agent.add("Are you sure you want to clock in?");
+  agent.add([
+    new Text("Are you sure you want to clock in?"),
+    new Suggestion("Yes"),
+    new Suggestion("No"),
+  ]);
 }
 
 function clockInYesHandler(agent) {
-  agent.add("Clocking in . . .");
+  agent.add("Clocking in...");
   agent.add(
     new Payload(
       agent.UNSPECIFIED,
@@ -28,11 +32,15 @@ function clockInYesHandler(agent) {
 }
 
 function clockOutHandler(agent) {
-  agent.add("Are you sure you want to clock out?");
+  agent.add([
+    new Text("Are you sure you want to clock out?"),
+    new Suggestion("Yes"),
+    new Suggestion("No"),
+  ]);
 }
 
 function clockOutYesHandler(agent) {
-  agent.add("Clocking out . . .");
+  agent.add("Clocking out...");
   agent.add(
     new Payload(
       agent.UNSPECIFIED,
